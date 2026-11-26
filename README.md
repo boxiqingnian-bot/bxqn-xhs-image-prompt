@@ -4,29 +4,27 @@
 
 ## 先选你的用法
 
-### 用法一：你用支持 Skill 的 Agent（一次装好，之后只发图）
+### 用法一：你用 Codex（推荐：建一个反推专用文件夹）
 
-这个包就是一个建好的专用项目。AGENTS.md 是这个项目的规矩：只处理图片，别的不干；Skill 是具体干活的方法。在项目里发图片，就会自动按这套规矩和方法处理，不用再输入任何指令。
-
-用 Codex 最简单，整包直接用：
+这个包就是一个建好的反推专用文件夹。用 Codex 打开它，它就是一个项目：AGENTS.md 是这个文件夹的规矩（只处理图片，别的不干），Skill 是具体干活的方法。在这个文件夹里新开的每一个对话，都默认只做封面反推。
 
 1. 下载这个包，解压。
 2. 用 Codex 打开解压出来的文件夹（就是有 AGENTS.md 的这一层）。
-3. 在对话里上传 1–5 张想参考的商品封面图。
+3. 在这个项目里新开对话，上传 1–5 张想参考的商品封面图，什么文字都不用打。
 
-就这三步。之后每次只发图，就会逐张得到一段结构反推提示词。
+之后每次都这样：进这个文件夹、新开对话、只发图，就会逐张得到一段结构反推提示词，不用点名调用，不用重复交代要求。
 
-用 Claude Code、WorkBuddy、豆包的 Agent 版等其他工具也可以，只是多一步：把 `.agents/skills/bxqn-xhs-image-prompt` 文件夹导入或放进那个工具的技能目录，AGENTS.md 放到你的项目根目录，效果一样。也可以把这个包直接发给你的 Agent，让它帮你装好。
+用 Claude Code、WorkBuddy 等其他 Agent 工具也可以：把 AGENTS.md 放到你的项目根目录，把 `.agents/skills/bxqn-xhs-image-prompt` 文件夹导入那个工具的技能目录，效果一样。也可以把这个包直接发给你的 Agent，让它帮你装好。
 
-已经装过 Skills 工具的，在终端运行这一条命令，就能把 Skill 装到你所有的 Agent 里。没有终端习惯的，也可以把这条命令直接粘贴到 Agent 的对话框里发出去，Agent 会自己执行：
+备选：不想建专用文件夹，想在自己现有项目里顺手用，就在终端运行这条命令（也可以直接粘贴到 Agent 的对话框里发出去，它会自己执行），把 Skill 全局装到你所有的 Agent 里：
 
 ```bash
 npx -y skills add boxiqingnian-bot/bxqn-xhs-image-prompt -g --all
 ```
 
-这条命令是全局安装，装一次，所有项目都能用，不必为它专门新开一个项目。但装好后要**新开一个对话**再发图：技能清单在对话开始时加载，当前对话里不会立刻生效。
+这种方式没有专用文件夹那层规矩：装好后要新开一个对话再发图，发图时最好带一句「反推一下」。
 
-如果你想批量处理封面，希望有一个项目专门只干这一件事，就用上面的整包方式，把解压出的文件夹当作一个新项目打开。那种方式多一层项目规矩，这个项目里的对话只处理图片。
+还没有 Agent 的，直接看下面的用法二。
 
 ### 用法二：你不用 Agent，用聊天 AI（不用装任何东西）
 
@@ -53,7 +51,7 @@ npx -y skills add boxiqingnian-bot/bxqn-xhs-image-prompt -g --all
 ## 包里有什么
 
 ```text
-AGENTS.md                                      Codex 打开这个项目时生效的规则
+AGENTS.md                                      反推专用文件夹的规矩，Codex 打开时生效
 .agents/skills/bxqn-xhs-image-prompt/SKILL.md       爆款封面结构反推skill
 .agents/skills/bxqn-xhs-image-prompt/agents/openai.yaml
                                                 Skill 的界面信息（显示名、简介）

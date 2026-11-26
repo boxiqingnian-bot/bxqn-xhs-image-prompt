@@ -1,0 +1,4 @@
+interface:
+  display_name: "爆款封面结构反推助手"
+  short_description: "从商品封面图反推AI生图提示词与场景结构"
+  default_prompt: "请识别这张小红书封面图，并输出一段结构反推提示词。"
